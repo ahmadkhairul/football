@@ -144,8 +144,8 @@ Run php artisan serve
 
 ## Built With
 
--   [Laravel](https://laravel.com/) - Front-end
--   [MySQL](https://www.mysql.com) - Database
+-   [Laravel](https://laravel.com/)
+-   [MySQL](https://www.mysql.com)
 
 ## Author
 
