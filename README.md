@@ -11,7 +11,7 @@ FOOTBALL is API for calculating rank and score match
 ## Table of Contents
 
 -   [Installation](#installation)
--   [Screenshots](#screenshots)
+-   [API Documentation](#api-documentation)
 -   [Built With](#built-with)
 -   [Author](#author)
 
@@ -49,7 +49,103 @@ Run php artisan db:seed to run seeders, if any.
 Run php artisan serve
 ```
 
-## Screenshots
+## API DOCUMENTATION
+
+1.  Record Game
+    POST : http://localhost:8000/football/recordgame
+    Body raw parameter example:
+
+    ```
+    {
+        "data": [
+            {
+                "clubhomename": "Chelsea",
+                "clubawayname": "Man United",
+                "score": "1 : 2"
+            },
+            {
+                "clubhomename": "Liverpool",
+                "clubawayname": "Chelsea",
+                "score": "1 : 1"
+            }
+        ]
+    }
+    ```
+
+    Result :
+
+    ```
+    {
+        "message": "Game Recorded",
+        "data": [
+            {
+                "home": {
+                    "clubname": "Chelsea",
+                    "points": 3
+                },
+                "away": {
+                    "clubname": "Man United",
+                    "points": 5
+                }
+            },
+            {
+                "home": {
+                    "clubname": "Liverpool",
+                    "points": 26
+                },
+                "away": {
+                    "clubname": "Chelsea",
+                    "points": 4
+                }
+            }
+        ]
+    }
+    ```
+
+2.  All League Standing
+    GET : http://localhost:8000/football/leaguestanding
+
+    Result :
+
+    ```
+    {
+        "message": "Get League Standing Success",
+        "data": [
+            {
+                "clubname": "Chelsea",
+                "points": 4
+            },
+            {
+                "clubname": "Man United",
+                "points": 5
+            },
+            {
+                "clubname": "Liverpool",
+                "points": 26
+            }
+        ]
+    }
+    ```
+
+3.  Club Standing
+    GET : http://localhost:8000/football/rank?clubname="Man Utd"
+
+    Result :
+
+    ```
+    {
+        "message": "Get Rank Success",
+        "data": {
+            "clubname": "Man United",
+            "standing": 2
+        }
+    }
+    ```
+
+## Built With
+
+-   [Laravel](https://laravel.com/) - Front-end
+-   [MySQL](https://www.mysql.com) - Database
 
 ## Author
 
